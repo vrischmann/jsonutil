@@ -12,6 +12,12 @@ type Duration struct {
 	time.Duration
 }
 
+// FromDuration is a convenience factory to create a Duration instance from the
+// given time.Duration value.
+func FromDuration(d time.Duration) Duration {
+	return Duration{d}
+}
+
 // MarshalJSON implements the json.Marshaler interface. The duration is a quoted-string in the format accepted by time.ParseDuration and returned by time.Duration.String.
 func (d Duration) MarshalJSON() ([]byte, error) {
 	return []byte(`"` + d.String() + `"`), nil
