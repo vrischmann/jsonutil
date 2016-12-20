@@ -8,6 +8,11 @@ import (
 	"github.com/vrischmann/jsonutil"
 )
 
+func TestFromDuration(t *testing.T) {
+	dur := 10 * time.Second
+	require.Equal(t, jsonutil.FromDuration(dur).Duration, dur)
+}
+
 func TestMarshalJSON(t *testing.T) {
 	d := jsonutil.Duration{time.Second * 10}
 	data, err := d.MarshalJSON()
